@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="58" fill="#0F172A" stroke="#6366F1" stroke-width="4"/>
+  
+  <!-- Outer Ring - Simulation Environment -->
+  <circle cx="60" cy="60" r="48" stroke="#6366F1" stroke-width="2" stroke-dasharray="4 2"/>
+  
+  <!-- Inner Elements - Work Stations -->
+  <rect x="40" y="35" width="40" height="25" rx="4" fill="#4F46E5" opacity="0.8"/>
+  <rect x="45" y="40" width="30" height="3" rx="1.5" fill="#C7D2FE"/>
+  <rect x="45" y="47" width="20" height="3" rx="1.5" fill="#C7D2FE"/>
+  <rect x="45" y="54" width="25" height="3" rx="1.5" fill="#C7D2FE"/>
+  
+  <!-- Character -->
+  <circle cx="60" cy="80" r="10" fill="#6366F1"/>
+  <circle cx="60" cy="75" r="5" fill="#C7D2FE"/>
+  
+  <!-- Connection Lines -->
+  <path d="M60 70L60 65" stroke="#C7D2FE" stroke-width="2"/>
+  <path d="M60 90L60 95" stroke="#C7D2FE" stroke-width="2"/>
+  <path d="M50 80L45 80" stroke="#C7D2FE" stroke-width="2"/>
+  <path d="M70 80L75 80" stroke="#C7D2FE" stroke-width="2"/>
+  
+  <!-- Data Points -->
+  <circle cx="45" cy="80" r="2" fill="#F472B6"/>
+  <circle cx="75" cy="80" r="2" fill="#F472B6"/>
+  <circle cx="60" cy="95" r="2" fill="#F472B6"/>
+  <circle cx="60" cy="65" r="2" fill="#F472B6"/>
+  
+  <!-- Pulse Animation Effect (Static Representation) -->
+  <circle cx="60" cy="60" r="35" stroke="#F472B6" stroke-width="1" opacity="0.3"/>
+  <circle cx="60" cy="60" r="30" stroke="#F472B6" stroke-width="1" opacity="0.2"/>
+  <circle cx="60" cy="60" r="25" stroke="#F472B6" stroke-width="1" opacity="0.1"/>
+</svg>
