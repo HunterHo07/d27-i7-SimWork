@@ -138,7 +138,18 @@ export default function DemoPage() {
 
         {/* Call to Action */}
         <div className="text-center">
-          <button className="py-3 px-8 bg-indigo-600 hover:bg-indigo-700 rounded-md transition text-lg font-medium">
+          <button
+            onClick={() => {
+              // Select a random station to simulate starting a full simulation
+              const stations = ['developer', 'designer', 'pm', 'data', 'ai'];
+              const randomStation = stations[Math.floor(Math.random() * stations.length)];
+              handleStationSelect(randomStation);
+
+              // Show a success message
+              alert('Full simulation started! You have been assigned to the ' + getStationDisplayName(randomStation) + '.');
+            }}
+            className="py-3 px-8 bg-indigo-600 hover:bg-indigo-700 rounded-md transition text-lg font-medium"
+          >
             Start Full Simulation
           </button>
         </div>

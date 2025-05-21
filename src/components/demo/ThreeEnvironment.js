@@ -8,13 +8,13 @@ export default function ThreeEnvironment({ onStationSelect }) {
   const sceneRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentStation, setCurrentStation] = useState(null);
-  
+
   useEffect(() => {
     if (!containerRef.current) return;
-    
+
     // Initialize Three.js scene
     sceneRef.current = new ThreeScene(containerRef.current);
-    
+
     // Set up station interaction callback
     sceneRef.current.onStationInteract = (stationName) => {
       setCurrentStation(stationName);
@@ -22,23 +22,33 @@ export default function ThreeEnvironment({ onStationSelect }) {
         onStationSelect(stationName);
       }
     };
-    
+
     // Initialize scene
     sceneRef.current.init();
-    
+
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
-    
+
+    // Cleanup function
     return () => {
       clearTimeout(timer);
-      if (sceneRef.current) {
-        sceneRef.current.cleanup();
+
+      // Make sure to properly clean up the Three.js scene
+      if (sceneRef.current && sceneRef.current.isInitialized) {
+        try {
+          sceneRef.current.cleanup();
+        } catch (error) {
+          console.error("Error during Three.js cleanup:", error);
+        }
       }
+
+      // Clear the reference
+      sceneRef.current = null;
     };
   }, [onStationSelect]);
-  
+
   return (
     <div className="relative w-full h-full">
       {isLoading && (
@@ -49,12 +59,12 @@ export default function ThreeEnvironment({ onStationSelect }) {
           </div>
         </div>
       )}
-      
-      <div 
-        ref={containerRef} 
+
+      <div
+        ref={containerRef}
         className="w-full h-full bg-slate-900 rounded-lg overflow-hidden"
       ></div>
-      
+
       {currentStation && !isLoading && (
         <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-md border border-indigo-500/30">
           <div className="text-sm font-medium text-white">
@@ -66,7 +76,7 @@ export default function ThreeEnvironment({ onStationSelect }) {
           </div>
         </div>
       )}
-      
+
       {!isLoading && (
         <div className="absolute bottom-4 right-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-md border border-indigo-500/30 text-xs text-gray-300">
           Click to move character • Click on stations to interact
