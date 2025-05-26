@@ -8,6 +8,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const apiUrl
 
   useEffect(() => {
     const handleScroll = () => {
